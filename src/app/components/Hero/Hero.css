@@ -1,0 +1,300 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(120deg, #0052cc 0%, #0073e6 50%, #0052cc 100%);
+  background-size: 200% 200%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Bubble base style */
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5),
+    0 0 15px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.1));
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  pointer-events: none;
+  z-index: 0;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+/* Generate each bubble with different size, position & animations */
+
+.bubble-1 {
+  width: 80px;
+  height: 80px;
+  top: 10%;
+  left: 15%;
+  animation-name: float3d1;
+  animation-duration: 14s;
+  animation-delay: 0s;
+  opacity: 0.3;
+}
+
+.bubble-2 {
+  width: 50px;
+  height: 50px;
+  top: 25%;
+  left: 40%;
+  animation-name: float3d2;
+  animation-duration: 12s;
+  animation-delay: 2s;
+  opacity: 0.25;
+}
+
+.bubble-3 {
+  width: 60px;
+  height: 60px;
+  top: 50%;
+  left: 10%;
+  animation-name: float3d3;
+  animation-duration: 17s;
+  animation-delay: 4s;
+  opacity: 0.35;
+}
+
+.bubble-4 {
+  width: 40px;
+  height: 40px;
+  top: 70%;
+  left: 50%;
+  animation-name: float3d1;
+  animation-duration: 15s;
+  animation-delay: 3s;
+  opacity: 0.2;
+}
+
+.bubble-5 {
+  width: 90px;
+  height: 90px;
+  top: 80%;
+  left: 30%;
+  animation-name: float3d2;
+  animation-duration: 18s;
+  animation-delay: 6s;
+  opacity: 0.3;
+}
+
+.bubble-6 {
+  width: 55px;
+  height: 55px;
+  top: 20%;
+  left: 75%;
+  animation-name: float3d3;
+  animation-duration: 14s;
+  animation-delay: 1s;
+  opacity: 0.25;
+}
+
+.bubble-7 {
+  width: 70px;
+  height: 70px;
+  top: 40%;
+  left: 80%;
+  animation-name: float3d1;
+  animation-duration: 16s;
+  animation-delay: 5s;
+  opacity: 0.3;
+}
+
+.bubble-8 {
+  width: 60px;
+  height: 60px;
+  top: 65%;
+  left: 80%;
+  animation-name: float3d2;
+  animation-duration: 13s;
+  animation-delay: 7s;
+  opacity: 0.22;
+}
+
+.bubble-9 {
+  width: 35px;
+  height: 35px;
+  top: 30%;
+  left: 60%;
+  animation-name: float3d3;
+  animation-duration: 15s;
+  animation-delay: 8s;
+  opacity: 0.15;
+}
+
+.bubble-10 {
+  width: 80px;
+  height: 80px;
+  top: 55%;
+  left: 65%;
+  animation-name: float3d1;
+  animation-duration: 19s;
+  animation-delay: 9s;
+  opacity: 0.25;
+}
+
+.bubble-11 {
+  width: 50px;
+  height: 50px;
+  top: 5%;
+  left: 85%;
+  animation-name: float3d2;
+  animation-duration: 14s;
+  animation-delay: 10s;
+  opacity: 0.2;
+}
+
+.bubble-12 {
+  width: 70px;
+  height: 70px;
+  top: 85%;
+  left: 60%;
+  animation-name: float3d3;
+  animation-duration: 18s;
+  animation-delay: 11s;
+  opacity: 0.3;
+}
+
+.bubble-13 {
+  width: 40px;
+  height: 40px;
+  top: 75%;
+  left: 75%;
+  animation-name: float3d1;
+  animation-duration: 20s;
+  animation-delay: 12s;
+  opacity: 0.18;
+}
+
+.bubble-14 {
+  width: 90px;
+  height: 90px;
+  top: 45%;
+  left: 35%;
+  animation-name: float3d2;
+  animation-duration: 17s;
+  animation-delay: 13s;
+  opacity: 0.25;
+}
+
+.bubble-15 {
+  width: 60px;
+  height: 60px;
+  top: 15%;
+  left: 55%;
+  animation-name: float3d3;
+  animation-duration: 16s;
+  animation-delay: 14s;
+  opacity: 0.22;
+}
+
+/* 3D float keyframes */
+
+@keyframes float3d1 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate3d(15px, -20px, 20px) scale(1.05);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.3;
+  }
+}
+
+@keyframes float3d2 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translate3d(-20px, 15px, 15px) scale(0.95);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.25;
+  }
+}
+
+@keyframes float3d3 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translate3d(10px, 25px, 25px) scale(1.1);
+    opacity: 0.35;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.2;
+  }
+}
+
+/* Rest of your existing styles */
+
+.text-info-name {
+  font-size: 45px;
+  font-weight: 700;
+  font-family: "Poppins", "Roboto", "Helvetica", sans-serif;
+  color: #06d69f;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.text-info-development {
+  font-size: 15px;
+  font-weight: 900;
+  font-family: "Poppins", "Roboto", "Helvetica", sans-serif;
+  color: #06d69f;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.view-Portfolio {
+  background-color: #06d69f;
+}
+
+.hero-img-wrapper {
+  width: 280px;
+  height: 280px;
+  background: linear-gradient(145deg, #1e3a8a, #2563eb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  animation: glowPulse 3s ease-in-out infinite;
+  overflow: hidden;
+}
+
+.hero-img-wrapper img {
+  border-radius: 50%;
+  transition: transform 0.4s ease-in-out;
+}
+
+.hero-img-wrapper img:hover {
+  transform: scale(1.05);
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 15px rgba(0, 188, 212, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 188, 212, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(0, 188, 212, 0.3);
+  }
+}

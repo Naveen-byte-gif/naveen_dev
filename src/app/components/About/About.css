@@ -1,0 +1,17 @@
+#about {
+  scroll-margin-top: 80px;
+}
+
+#about p {
+  font-family: "Poppins", sans-serif;
+}
+
+#about h2,
+#about h3,
+#about h5 {
+  font-family: "Poppins", sans-serif;
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}

@@ -1,0 +1,41 @@
+.navbar {
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+
+.navbar-brand {
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+}
+
+.nav-link {
+  color: #333 !important;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #0d6efd !important;
+}
+
+.btn-primary {
+  background-color: #2065f4;
+  border: none;
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background-color: #004ce5;
+}
+
+/* Center navbar items in mobile */
+@media (max-width: 991.98px) {
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-item {
+    margin: 0.5rem 0;
+  }
+}
