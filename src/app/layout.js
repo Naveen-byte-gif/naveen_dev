@@ -32,11 +32,7 @@ export const metadata = {
     "Hire Full Stack Developer India",
   ],
   authors: [{ name: "Tungana Naveen" }],
-  icons: {
-    icon: "/brand_logo.ico",
-    // shortcut: "/favicon-32x32.png",
-    // apple: "/apple-touch-icon.png",
-  },
+  icons: { icon: "/favicon.ico" },
   manifest: "/site.webmanifest",
   themeColor: "#0d6efd",
   openGraph: {
@@ -69,8 +65,22 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" />
-
+      <head>
+        {/* Google Verification */}
+        <meta
+          name="google-site-verification"
+          content="eI8suGCpSqDnH3jXbbRMrjnSHwRmzUi_XH553lbZUJ8"
+        />
+        {/* Canonical */}
+        <link rel="canonical" href="https://naveentechlabs.netlify.app" />
+        {/* Sitemap */}
+        <link
+          rel="sitemap"
+          type="application/xml"
+          title="Sitemap"
+          href="/sitemap.xml"
+        />
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   );
