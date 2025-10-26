@@ -101,7 +101,7 @@ function Hero() {
             </p>
 
             <p className="fs-6 text-white">
-              <i className="bi bi-person-badge text-white"></i> 2+ Years of
+              <i className="bi bi-person-badge text-white"></i> 1+ Years of
               Experience
             </p>
 
@@ -149,7 +149,7 @@ function Hero() {
                 fontSize: "0.95rem",
               }}
             >
-              <i className="bi bi-person-badge me-2"></i>2+ Years Experience
+              <i className="bi bi-person-badge me-2"></i>1+ Years Experience
             </div>
           </div>
         </div>

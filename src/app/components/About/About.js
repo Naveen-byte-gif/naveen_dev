@@ -24,7 +24,7 @@ function About() {
                 Professional Journey
               </h3>
               <p className="text-secondary lh-lg">
-                With over <strong>2 years of experience</strong> in software
+                With over <strong>1 years of experience</strong> in software
                 development, I specialize in creating cross-platform mobile
                 applications using <strong>Flutter</strong> and modern web
                 applications with <strong>Next.js</strong>. My passion lies in
