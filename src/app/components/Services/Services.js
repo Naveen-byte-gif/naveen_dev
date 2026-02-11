@@ -1,10 +1,7 @@
 "use client";
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import "./Services.css";
 
-gsap.registerPlugin(ScrollTrigger);
+import React, { useState } from "react";
+import "./Services.css";
 
 const services = [
   {
@@ -76,190 +73,19 @@ const services = [
 ];
 
 const Services = () => {
-  const sectionRef = useRef(null);
-  const titleRef = useRef(null);
-  const subtitleRef = useRef(null);
-  const cubesRef = useRef([]);
-  const particlesRef = useRef([]);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Section entrance animation
-      gsap.fromTo(
-        sectionRef.current,
-        { opacity: 0, y: 100 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.5,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Title animation
-      gsap.fromTo(
-        titleRef.current,
-        { opacity: 0, scale: 0.8 },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 1.2,
-          ease: "back.out(1.7)",
-          scrollTrigger: {
-            trigger: titleRef.current,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Subtitle animation
-      gsap.fromTo(
-        subtitleRef.current,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          delay: 0.3,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: subtitleRef.current,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Cube cards animation with stagger
-      cubesRef.current.forEach((cube, index) => {
-        gsap.fromTo(
-          cube,
-          {
-            opacity: 0,
-            y: 100,
-            rotationY: -45,
-            scale: 0.8,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            rotationY: 0,
-            scale: 1,
-            duration: 1.2,
-            delay: index * 0.15,
-            ease: "back.out(1.7)",
-            scrollTrigger: {
-              trigger: cube,
-              start: "top 85%",
-              toggleActions: "play none none reverse",
-            },
-          }
-        );
-      });
-
-      // Floating particles animation
-      particlesRef.current.forEach((particle, index) => {
-        gsap.to(particle, {
-          y: gsap.utils.random(-50, 50),
-          x: gsap.utils.random(-40, 40),
-          rotation: gsap.utils.random(-180, 180),
-          duration: gsap.utils.random(6, 12),
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-          delay: index * 0.5,
-        });
-      });
-
-      // Continuous subtle floating for cubes
-      cubesRef.current.forEach((cube, index) => {
-        gsap.to(cube, {
-          y: -15,
-          duration: 3,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-          delay: index * 0.2,
-        });
-      });
-
-      // Magnetic hover effect for cubes
-      cubesRef.current.forEach((cube) => {
-        const cubeInner = cube.querySelector(".premium-cube-inner");
-
-        cube.addEventListener("mousemove", (e) => {
-          const rect = cube.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-
-          gsap.to(cube, {
-            x: (x - rect.width / 2) * 0.1,
-            y: (y - rect.height / 2) * 0.1,
-            rotationY: (x - rect.width / 2) * 0.05,
-            rotationX: -(y - rect.height / 2) * 0.05,
-            duration: 0.5,
-            ease: "power2.out",
-          });
-        });
-
-        cube.addEventListener("mouseleave", () => {
-          gsap.to(cube, {
-            x: 0,
-            y: 0,
-            rotationY: 0,
-            rotationX: 0,
-            duration: 0.7,
-            ease: "elastic.out(1, 0.5)",
-          });
-
-          // Reset cube rotation if not flipped
-          if (!cube.classList.contains("is-flipped")) {
-            gsap.to(cubeInner, {
-              rotationY: 0,
-              duration: 0.7,
-              ease: "elastic.out(1, 0.5)",
-            });
-          }
-        });
-      });
-    });
-
-    return () => ctx.revert();
-  }, []);
+  const [flippedCards, setFlippedCards] = useState({});
 
   const handleCubeClick = (index) => {
-    const cube = cubesRef.current[index];
-    const cubeInner = cube.querySelector(".premium-cube-inner");
-
-    if (cube.classList.contains("is-flipped")) {
-      cube.classList.remove("is-flipped");
-      gsap.to(cubeInner, {
-        rotationY: 0,
-        duration: 0.8,
-        ease: "back.out(1.7)",
-      });
-    } else {
-      cube.classList.add("is-flipped");
-      gsap.to(cubeInner, {
-        rotationY: 180,
-        duration: 0.8,
-        ease: "back.out(1.7)",
-      });
-    }
+    setFlippedCards(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }));
   };
 
   return (
     <section
       id="services"
       className="services-section position-relative overflow-hidden"
-      ref={sectionRef}
     >
       {/* Background Elements */}
       <div className="background-elements">
@@ -269,33 +95,18 @@ const Services = () => {
 
         {/* Animated Grid */}
         <div className="animated-grid"></div>
-
-        {/* Floating Particles */}
-        {[...Array(25)].map((_, i) => (
-          <div
-            key={`particle-${i}`}
-            className="service-particle"
-            ref={(el) => (particlesRef.current[i] = el)}
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              width: `${Math.random() * 8 + 2}px`,
-              height: `${Math.random() * 8 + 2}px`,
-            }}
-          ></div>
-        ))}
       </div>
 
       <div className="container py-6 position-relative z-2">
         {/* Section Header */}
         <header className="text-center mb-6">
           <div className="section-header">
-            <h2 className="section-title gradient-text" ref={titleRef}>
+            <h2 className="section-title gradient-text">
               Premium Services
             </h2>
             <div className="title-underline"></div>
           </div>
-          <p className="section-subtitle" ref={subtitleRef}>
+          <p className="section-subtitle">
             Comprehensive development solutions crafted with cutting-edge
             technology and innovative design approaches for your business
             success
@@ -307,8 +118,7 @@ const Services = () => {
           {services.map((service, index) => (
             <div key={index} className="col-12 col-md-6 col-lg-4">
               <div
-                className="premium-cube-card"
-                ref={(el) => (cubesRef.current[index] = el)}
+                className={`premium-cube-card ${flippedCards[index] ? 'is-flipped' : ''}`}
                 onClick={() => handleCubeClick(index)}
                 style={{
                   "--service-gradient": service.gradient,
