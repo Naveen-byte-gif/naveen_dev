@@ -59,7 +59,7 @@ function Navbar() {
           opacity: 1,
           duration: 1,
           ease: "power3.out",
-        }
+        },
       );
 
       // Logo animation
@@ -73,7 +73,7 @@ function Navbar() {
             duration: 1,
             delay: 0.2,
             ease: "back.out(1.7)",
-          }
+          },
         );
       }
 
@@ -89,7 +89,7 @@ function Navbar() {
               duration: 0.6,
               delay: 0.4 + index * 0.1,
               ease: "power2.out",
-            }
+            },
           );
         }
       });
@@ -105,7 +105,7 @@ function Navbar() {
             duration: 0.8,
             delay: 0.8,
             ease: "elastic.out(1, 0.5)",
-          }
+          },
         );
       }
     });
@@ -134,7 +134,7 @@ function Navbar() {
             y: 0,
             duration: 0.5,
             ease: "power2.out",
-          }
+          },
         );
 
         // Animate mobile menu items
@@ -149,7 +149,7 @@ function Navbar() {
             stagger: 0.1,
             ease: "back.out(1.7)",
             delay: 0.2,
-          }
+          },
         );
       } else {
         // Mobile menu close animation
@@ -175,7 +175,7 @@ function Navbar() {
 
     // Add click animation to the nav link
     const clickedLink = navLinksRef.current.find(
-      (link) => link && link.getAttribute("href") === `#${sectionId}`
+      (link) => link && link.getAttribute("href") === `#${sectionId}`,
     );
 
     if (clickedLink) {
